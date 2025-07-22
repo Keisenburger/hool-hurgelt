@@ -24,10 +24,6 @@ server.use("/food-category", foodCategoryRouter);
 server.use("/auth", authRouter);
 server.use("/food-order", foodOrderRouter);
 
-server.get("/", (_req, res) => {
-  res.send("Hello");
-});
-
 server.listen(port, () => {
   console.log("server asla");
 });
