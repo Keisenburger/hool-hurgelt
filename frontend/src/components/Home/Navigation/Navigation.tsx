@@ -45,7 +45,11 @@ const Navigation = () => {
           </button>
         </div>
       </div>
-      {isSidebarOpen && <Sidebar setIsSidebarOpen={setIsSidebarOpen} />}
+      {isSidebarOpen && (
+        <div className="w-screen h-screen fixed top-0 right-0 z-50 bg-black/50">
+          <Sidebar setIsSidebarOpen={setIsSidebarOpen} />
+        </div>
+      )}
     </div>
   );
 };

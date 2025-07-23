@@ -1,4 +1,4 @@
-import { postFood } from "@/functions/fetcherFunctions/POST/postData";
+import { postFood } from "@/functions/fetcherFunctions/POST";
 import { Category } from "@/types";
 import { X, Image, Upload } from "lucide-react";
 import { useState } from "react";

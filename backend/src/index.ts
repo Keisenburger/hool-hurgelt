@@ -1,13 +1,14 @@
-import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
 import mongoose from "mongoose";
+
 import {
   foodsRouter,
   foodCategoryRouter,
   authRouter,
   foodOrderRouter,
 } from "./routes/index.js";
-import dotenv from "dotenv";
 
 dotenv.config();
 

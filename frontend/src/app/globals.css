@@ -16,3 +16,7 @@
   animation: marquee 20s linear infinite;
   white-space: nowrap;
 }
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}

@@ -3,11 +3,11 @@ import { FoodOrder } from "../../models/index.js";
 
 export const createFoodOrder = async (req: Request, res: Response) => {
   try {
-    const { foodId, totalPrice, status, userId } = req.body;
+    const { foodIds, totalPrice, status, userId } = req.body;
     const newFoodOrder = await FoodOrder.create({
       user: userId,
       totalPrice: totalPrice,
-      foodOrderItems: foodId,
+      foodOrderItems: foodIds,
       status: status,
       createdAt: new Date(),
     });

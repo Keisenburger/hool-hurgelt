@@ -6,9 +6,11 @@ import { useContext, useState } from "react";
 export const HomeFoodModal = ({
   food,
   setIsModalOpen,
+  setIsAddedToCart,
 }: {
   food: Food;
   setIsModalOpen: (isModalOpen: boolean) => void;
+  setIsAddedToCart: (isAddedToCart: boolean) => void;
 }) => {
   const [quantity, setQuantity] = useState(1);
   const { cartItems, setCartItems } = useContext(cartContext);
@@ -16,6 +18,7 @@ export const HomeFoodModal = ({
     const newCart = [...cartItems, { ...food, quantity }];
     setCartItems(newCart);
     setIsModalOpen(false);
+    setIsAddedToCart(true);
   };
   return (
     <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/50 cursor-default text-[#09090B] overflow-y-auto">

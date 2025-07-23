@@ -1,4 +1,4 @@
-import { postCategory } from "@/functions/fetcherFunctions/POST/postData";
+import { postCategory } from "@/functions/fetcherFunctions/POST";
 import { X } from "lucide-react";
 import { useState } from "react";
 

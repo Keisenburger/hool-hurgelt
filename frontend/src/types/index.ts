@@ -25,9 +25,10 @@ export type Category = {
 };
 
 export type Order = {
+  fdfds;
   _id: string;
   createdAt: string;
-  totalPrice: string;
+  totalPrice: number;
   status: string;
   user: User;
   foodOrderItems: foodOrderItem[];
