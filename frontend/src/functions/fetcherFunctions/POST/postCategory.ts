@@ -9,7 +9,6 @@ export const postCategory = async (categoryName: string) => {
       headers: {
         "Content-Type": "application/json",
       },
-      // Send as an object instead of just the string
       body: JSON.stringify({ categoryName: categoryName }),
     });
 
@@ -22,6 +21,6 @@ export const postCategory = async (categoryName: string) => {
     return data;
   } catch (error) {
     console.error("Error posting category:", error);
-    throw error; // Re-throw to allow caller to handle
+    throw error;
   }
 };

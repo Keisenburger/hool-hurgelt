@@ -25,7 +25,6 @@ export type Category = {
 };
 
 export type Order = {
-  fdfds;
   _id: string;
   createdAt: string;
   totalPrice: number;

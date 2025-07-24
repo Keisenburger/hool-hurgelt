@@ -3,7 +3,6 @@ import { cartContext } from "@/context/cartContext";
 import { ShoppingCart, X } from "lucide-react";
 import SidebarCard from "./SidebarCard";
 import { postOrder } from "@/functions/fetcherFunctions/POST/postOrder";
-import { Order } from "@/types";
 
 const Sidebar = ({
   setIsSidebarOpen,
@@ -14,10 +13,7 @@ const Sidebar = ({
   const { cartItems } = useContext(cartContext);
   const [price, setPrice] = useState(0);
   const [shippingPrice, setShippingPrice] = useState(0);
-  const [order, setOrder] = useState<Order>({
-    foodIds: cartItems.map((item) => item._id),
-    totalPrice: price + shippingPrice,
-  });
+
   useEffect(() => {
     if (cartItems.length > 0) {
       setShippingPrice(0.99);
@@ -34,7 +30,7 @@ const Sidebar = ({
     setIsCartActive(!isCartActive);
   };
   const checkout = () => {
-    postOrder(order);
+    const order = {};
   };
   // const { foodId, totalPrice, status, userId } = req.body;
   return (
