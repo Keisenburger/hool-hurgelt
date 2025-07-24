@@ -3,11 +3,11 @@ import { FoodOrder } from "../../models/index.js";
 
 export const createFoodOrder = async (req: Request, res: Response) => {
   try {
-    const { foodIds, totalPrice, status, userId } = req.body;
+    const { foods, totalPrice, status, userId } = req.body;
     const newFoodOrder = await FoodOrder.create({
       user: userId,
       totalPrice: totalPrice,
-      foodOrderItems: foodIds,
+      foodOrderItems: [{ foodIds: foods.foodId, quantity: foods.quantity }],
       status: status,
       createdAt: new Date(),
     });
@@ -18,8 +18,6 @@ export const createFoodOrder = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error("Error creating food order:", error);
-    res
-      .status(400)
-      .json({ success: false, error: "Failed to create food order" });
+    res.status(400).json({ success: false, error: error });
   }
 };

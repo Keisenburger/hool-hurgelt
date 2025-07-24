@@ -11,7 +11,7 @@ export const AdminMenu = ({
   fetchAllData,
 }: CategoryProps) => {
   return (
-    <div className="rounded-xl bg-white">
+    <div className="rounded-xl bg-white transition-all duration-300 ease-in-out">
       {categories &&
         categories.map((category, index) => {
           return (

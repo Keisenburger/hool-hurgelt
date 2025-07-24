@@ -4,11 +4,11 @@ export type Food = {
   price: string;
   image: string;
   ingredients: string;
+  quantity: number;
   category: {
     categoryName: string;
     _id: string;
   };
-  quantity: number;
 };
 
 export type NewFood = {

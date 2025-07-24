@@ -101,9 +101,17 @@ const FoodEditModal = ({
     setInputs({ ...inputs, category: category });
   };
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
   return (
-    <div className="w-full h-full fixed flex justify-center items-center left-0 top-0 z-30 bg-black/50 cursor-default text-[#09090B]">
-      <div className="bg-white rounded-xl p-6 flex flex-col gap-6 min-w-lg">
+    <div
+      className="w-full h-full fixed flex justify-center items-center left-0 top-0 z-30 bg-black/50 cursor-default text-[#09090B] custom-close-cursor"
+      onClick={handleBackdropClick}
+    >
+      <div className="bg-white rounded-xl p-6 flex flex-col gap-6 min-w-lg cursor-default">
         <div className="flex justify-between items-center">
           <p className="font-semibold text-[16px]">Dishes Info</p>
           <button

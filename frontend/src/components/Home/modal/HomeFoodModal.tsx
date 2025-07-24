@@ -14,22 +14,34 @@ export const HomeFoodModal = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
   const { cartItems, setCartItems } = useContext(cartContext);
+
   const addToCart = (food: Food, quantity: number) => {
     const newCart = [...cartItems, { ...food, quantity }];
     setCartItems(newCart);
     setIsModalOpen(false);
     setIsAddedToCart(true);
   };
+
+  // Modal backdrop дээр дарахад хаах функц
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/50 cursor-default text-[#09090B] overflow-y-auto">
-      <div className="bg-white rounded-xl p-6 flex  gap-6  w-full mx-4 my-8  max-w-xl overflow-y-auto min-h-[300px]">
+    <div
+      className="fixed inset-0 z-30 flex items-center justify-center bg-black/50 custom-close-cursor text-[#09090B] overflow-y-auto transition-all duration-200"
+      onClick={handleBackdropClick}
+    >
+      <div className="bg-white rounded-xl p-6 flex gap-6 w-full mx-4 my-8 max-w-xl overflow-y-auto min-h-[300px] cursor-default">
         <img
           src={food.image}
           alt={food.foodName}
           className="w-62 h-62 object-cover rounded-lg flex-shrink-0"
         />
-        <div className="flex flex-col  gap-10 justify-between w-full">
-          <div className="flex  flex-col  items-end w-full">
+        <div className="flex flex-col gap-10 justify-between w-full">
+          <div className="flex flex-col items-end w-full">
             <div
               className="rounded-full bg-[#F4F4F5] p-2 hover:bg-[#E4E4E7] transition duration-200 cursor-pointer"
               onClick={() => setIsModalOpen(false)}
@@ -64,7 +76,7 @@ export const HomeFoodModal = ({
                 </button>
                 <p className="text-lg font-semibold">{quantity}</p>
                 <button
-                  className=" p-2 rounded-full border cursor-pointer"
+                  className="p-2 rounded-full border cursor-pointer"
                   onClick={() => setQuantity(quantity + 1)}
                 >
                   <Plus />

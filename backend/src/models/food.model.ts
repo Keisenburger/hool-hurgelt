@@ -27,6 +27,3 @@ const foodSchema = new Schema({
 });
 
 export const Food = model("Food", foodSchema);
-
-// pass = VUdkhPNDzxXy6NwJ
-// username = erdembileg0906

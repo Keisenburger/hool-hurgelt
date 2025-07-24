@@ -11,8 +11,11 @@ const foodOrderSchema = new Schema({
   },
   foodOrderItems: [
     {
-      type: Types.ObjectId,
-      ref: "Food",
+      type: {
+        foodId: Types.ObjectId,
+        quantity: Number,
+      },
+      ref: "FoodOrderItem",
       required: true,
     },
   ],
