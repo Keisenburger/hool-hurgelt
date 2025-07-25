@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const logInSchema = yup.object({
   email: yup
@@ -13,7 +15,7 @@ const logInSchema = yup.object({
     .required("Please enter your email address"),
   password: yup
     .string()
-    .min(8, "Please enter minimum 8 characters at least")
+    .min(6, "Please enter minimum 6 characters at least")
     .required("Please enter a password"),
 });
 
@@ -29,8 +31,18 @@ const SignInField = () => {
     mode: "onChange",
   });
 
-  const submit = (data: LogInFormData) => {
-    console.log(data);
+  const router = useRouter();
+  const submit = async (data: LogInFormData) => {
+    await axios
+      .post("http://localhost:4000/auth/sign-in", {
+        email: data.email,
+        password: data.password,
+      })
+      .then((res) => {
+        localStorage.setItem("userToken", res.data.token);
+        console.log(res.data);
+      });
+    router.push("/");
   };
 
   return (

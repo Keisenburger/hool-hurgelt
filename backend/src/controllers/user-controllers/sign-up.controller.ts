@@ -9,7 +9,7 @@ export const signUp = async (req: Request, res: Response) => {
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
 
-    const hashedPassword = bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({
       email: email,
       password: hashedPassword,
@@ -24,6 +24,6 @@ export const signUp = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error("Failed to create user:", error);
-    res.status(400).json({ success: false, error: "Failed to create user" });
+    res.status(400).json({ success: false, error: error });
   }
 };

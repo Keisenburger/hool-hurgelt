@@ -15,14 +15,19 @@ export const signIn = async (req: Request, res: Response) => {
         message: "Invalid email or password",
       });
     }
+    console.log(email);
 
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res.status(401).json({ error: "Authentication failed" });
     }
-    const token = jwt.sign({ userId: user._id }, "your-secret-key", {
-      expiresIn: "24h",
-    });
+    const token = jwt.sign(
+      { userId: user._id, email: user.email, role: user.role },
+      "your-secret-key",
+      {
+        expiresIn: "24h",
+      }
+    );
     res.status(200).json({
       success: true,
       user: user,
